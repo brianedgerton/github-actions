@@ -36,6 +36,18 @@ module.exports = ( _baseUrl, apiToken ) => {
 				headers: { Authorization }
 			} ).json();
 		},
+		assignCards: ( cardIds, userIdsToAssign, userIdsToUnassign, wipOverrideComment ) => {
+			return got( `${ baseUrl }/io/card/assign`, {
+				method: "POST",
+				json: {
+					cardIds,
+					userIdsToAssign,
+					userIdsToUnassign,
+					wipOverrideComment
+				},
+				headers: { Authorization }
+			} ).json();
+		},
 		addComment: ( cardId, comment ) => {
 			return got( `${ baseUrl }/io/card/${ cardId }/comment`, {
 				method: "POST",
